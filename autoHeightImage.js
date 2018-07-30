@@ -7,7 +7,7 @@ import React, { PureComponent } from 'react';
 import Image from 'react-native-android-image-polyfill';
 import { StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-
+import { CachedImage, ImageCacheProvider } from 'react-native-cached-image';
 import { getImageSizeFitWidth, getImageSizeFitWidthFromCache } from './cache';
 import { NOOP, DEFAULT_HEIGHT } from './helpers';
 
@@ -81,7 +81,7 @@ export default class AutoHeightImage extends PureComponent {
         // remove `width` prop from `restProps`
         const { source, style, width, ...restProps } = this.props;
         return (
-            <Image
+            <CachedImage
                 source={source}
                 style={[this.styles.image, style]}
                 {...restProps}
